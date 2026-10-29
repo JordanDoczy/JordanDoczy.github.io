@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jordan Doczy — Senior iOS Engineer. Native mobile platforms, media engines, Swift Concurrency, SwiftUI, Datadog observability, and AI-assisted engineering.">
+  <meta property="og:title" content="Jordan Doczy — Senior iOS Engineer">
+  <meta property="og:description" content="Senior iOS Engineer with a proven track record of architecting scalable mobile platforms, high-performance media engines, and robust data observability for tier-1 apps like The New York Times.">
+  <meta property="og:image" content="images/_common/preview-image.png">
+  <title>Jordan Doczy — Senior iOS Engineer</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #555555;
+      --text-subtle: #777777;
+      --border: #e5e7eb;
+      --border-hover: #d1d5db;
+      --link: #0969da;
+      --link-hover: #054da7;
+      --tag-bg: #f3f4f6;
+      --tag-text: #374151;
+      --card-bg: #fafafa;
+      --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      --highlight: #f8fafc;
+      --highlight-border: #cbd5e1;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121316;
+        --text: #e5e7eb;
+        --text-muted: #9ca3af;
+        --text-subtle: #6b7280;
+        --border: #242831;
+        --border-hover: #374151;
+        --link: #58a6ff;
+        --link-hover: #79b8ff;
+        --tag-bg: #1a1d24;
+        --tag-text: #d1d5db;
+        --card-bg: #161920;
+        --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+        --highlight: #181c24;
+        --highlight-border: #333a48;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      padding: 48px 20px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      margin-bottom: 44px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 4px;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .location {
+      font-size: 0.9rem;
+      color: var(--text-subtle);
+      margin-bottom: 18px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--link-hover);
+    }
+
+    .resume-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 600;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    p {
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .summary-lead {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    /* Project Cards */
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--card-shadow);
+    }
+
+    .card-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 8;
+      overflow: hidden;
+      background: var(--tag-bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .project-card:hover .card-media img {
+      transform: scale(1.025);
+    }
+
+    .card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .card-subtitle {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+
+    .date {
+      font-size: 0.85rem;
+      color: var(--text-subtle);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 14px;
+      line-height: 1.55;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 10px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 14px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Experience List */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .experience-item {
+      padding: 20px 22px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      border-radius: 8px;
+    }
+
+    .experience-item.current {
+      border-color: var(--highlight-border);
+      background: var(--highlight);
+    }
+
+    .bullet-list {
+      margin: 10px 0 12px 20px;
+      font-size: 0.93rem;
+      color: var(--text);
+    }
+
+    .bullet-list li {
+      margin-bottom: 8px;
+      line-height: 1.55;
+    }
+
+    .tech-inline {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      border-top: 1px dashed var(--border);
+      padding-top: 8px;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .skill-group {
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      border-radius: 6px;
+    }
+
+    .skill-group h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .skill-group p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+
+    /* Education */
+    .edu-item {
+      margin-bottom: 16px;
+    }
+
+    .edu-title {
+      font-weight: 600;
+      font-size: 0.98rem;
+      color: var(--text);
+    }
+
+    .edu-meta {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #fff;
+        color: #000;
+      }
+      .project-card, .experience-item, .skill-group {
+        border: 1px solid #ddd;
+        background: #fff;
+      }
+      .card-media {
+        display: none;
+      }
+      a {
+        color: #000;
+        text-decoration: underline;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1>Jordan Doczy</h1>
+      <p class="tagline">Senior iOS Engineer &middot; Mobile Architecture, Media Engines &amp; AI-Assisted Engineering</p>
+      <p class="location">Dayton, OH &middot; Remote &middot; Open to senior mobile engineering roles</p>
+      <div class="links">
+        <a href="mailto:jdoczy@gmail.com">jdoczy@gmail.com</a>
+        <a href="https://linkedin.com/in/jordandoczy" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/jordandoczy" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://itunes.apple.com/us/developer/jordan-doczy/id1062387752" target="_blank" rel="noopener">App Store</a>
+        <a href="resume.html" target="_blank" rel="noopener" class="resume-badge">View Resume &rarr;</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Summary -->
+      <section id="about">
+        <h2>Professional Summary</h2>
+        <p class="summary-lead">
+          <strong>Senior iOS Engineer</strong> with a proven track record of architecting scalable mobile platforms, high-performance media engines, and robust data observability frameworks for tier-1 applications like <strong>The New York Times</strong>.
+        </p>
+        <p>
+          Expert in modern native iOS paradigms—including <strong>SwiftUI, Swift Concurrency (Async/Await), and the Observable framework</strong>—paired with deep mobile infrastructure and modularization strategy. Adept at leveraging <strong>AI-assisted engineering tools</strong> to accelerate feature delivery, optimize codebases, and mentor multi-disciplinary mobile teams in modern development practices.
+        </p>
+      </section>
+
+      <!-- Core Competencies -->
+      <section id="skills">
+        <h2>Core Competencies</h2>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h3>Architecture &amp; iOS Ecosystem</h3>
+            <p>SwiftUI, Async/Await, Structured Concurrency, Observable Framework, AVFoundation, Combine, UIKit, App Modularization</p>
+          </div>
+          <div class="skill-group">
+            <h3>AI-Assisted Engineering</h3>
+            <p>AI Tool Integration (Claude Code), Prompt Engineering for Complex Codebases, Code Quality Automation, Technical Mentorship</p>
+          </div>
+          <div class="skill-group">
+            <h3>Observability &amp; CI/CD</h3>
+            <p>Datadog Dashboards, Feature Telemetry, Progressive Rollout Planning, App Health Monitoring, TestFlight Deployment, Bitrise</p>
+          </div>
+          <div class="skill-group">
+            <h3>Technical Leadership</h3>
+            <p>Code Review Standards, Tech Roadmap Execution, Cross-Functional Alignment, Agile/Scrum Methodologies</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Professional Experience -->
+      <section id="experience">
+        <h2>Professional Experience</h2>
+        <div class="experience-list">
+
+          <!-- The New York Times -->
+          <div class="experience-item current">
+            <div class="card-header">
+              <span class="card-title">The New York Times</span>
+              <span class="date">Feb 2022 &ndash; Present</span>
+            </div>
+            <div class="card-subtitle">Sr. iOS Developer / Technical Consultant &middot; Remote</div>
+            <ul class="bullet-list">
+              <li><strong>Rebuilt the core native mobile media engine</strong> powering all audio and video podcasts within the primary app ecosystem.</li>
+              <li><strong>Led the mobile infrastructure development</strong> for two high-traffic, media-focused application surfaces—the <strong>Watch Tab</strong> and the <strong>Shows Tab</strong>—ensuring performant UI delivery and fluid navigation.</li>
+              <li><strong>Architected and shipped a multi-threaded rendering engine</strong> to power nested reader comments, implementing advanced background thread processing and caching strategies.</li>
+              <li><strong>Integrated AI-first development workflows</strong> into daily operations, establishing best practices for prompt engineering and codebase safety that accelerated feature delivery across mobile teams.</li>
+              <li><strong>Owned release management and app health</strong> for major feature rollouts, designing progressive deployment strategies and building comprehensive <strong>Datadog telemetry dashboards</strong> to track app stability.</li>
+            </ul>
+            <div class="tech-inline">
+              Tech Stack: iOS SDK, Swift, SwiftUI, Async/Await, Structured Concurrency, Observable Framework, AVFoundation, Datadog, Bitrise, GitHub
+            </div>
+          </div>
+
+          <!-- Sherwin-Williams -->
+          <div class="experience-item">
+            <div class="card-header">
+              <span class="card-title">Sherwin-Williams</span>
+              <span class="date">Apr 2021 &ndash; Feb 2022</span>
+            </div>
+            <div class="card-subtitle">Sr. iOS Developer / Technical Consultant &middot; Dayton, OH</div>
+            <ul class="bullet-list">
+              <li><strong>Designed technical roadmaps and architectural plans</strong> for large-scale enterprise application rebuilds, translating business goals into production-ready Swift codebases.</li>
+              <li><strong>Spearheaded modern delivery and code standards</strong> across the flagship <em>ProApp</em>, optimizing pull request workflows, ticket scoping, test automation, and release management.</li>
+              <li><strong>Maintained technical cohesion across polyglot mobile tracks</strong>, writing features in modern Swift while unblocking and consulting for adjacent native Android development tracks.</li>
+            </ul>
+            <div class="tech-inline">
+              Tech Stack: iOS SDK, Swift, Objective-C, Android SDK, Kotlin, REST, Apple/Google Maps SDK, Google Analytics, Shell Scripting
+            </div>
+          </div>
+
+          <!-- Ascend Innovations -->
+          <div class="experience-item">
+            <div class="card-header">
+              <span class="card-title">Ascend Innovations</span>
+              <span class="date">Oct 2017 &ndash; Jan 2021</span>
+            </div>
+            <div class="card-subtitle">Lead iOS Developer &middot; Dayton, OH</div>
+            <ul class="bullet-list">
+              <li><strong>Served as hands-on technical lead</strong> for the architecture, development, and delivery of a diverse suite of native mobile products.</li>
+              <li><strong>Architected complex, low-level mobile features</strong>, including custom face recognition and eye-tracking applications utilizing native C++ and Swift capabilities.</li>
+              <li><strong>Guided a 5-person delivery team</strong> through code reviews, technical scoping, and architectural mentoring, ensuring timely software releases.</li>
+              <li><strong>Accelerated product validation cycles</strong> by constructing high-fidelity rapid technical prototypes, minimizing downstream architectural risk through structured technical testing.</li>
+            </ul>
+          </div>
+
+          <!-- Krush Technologies -->
+          <div class="experience-item">
+            <div class="card-header">
+              <span class="card-title">Krush Technologies</span>
+              <span class="date">Apr 2016 &ndash; Sep 2017</span>
+            </div>
+            <div class="card-subtitle">iOS Application Developer &middot; Dayton, OH</div>
+            <ul class="bullet-list">
+              <li><strong>Co-designed major architectural sub-systems</strong> for concurrent multi-user voice and video chat engines, collaborating across a scaled engineering organization of 20+ mobile developers.</li>
+              <li><strong>Scaled a modular video chat framework</strong> that was successfully extracted out of the core application and embedded across an external portfolio of gaming products.</li>
+            </ul>
+            <div class="tech-inline">
+              Tech Stack: iOS SDK, Swift, Android SDK, Java, Kotlin, REST, CircleCI, Cocoapods
+            </div>
+          </div>
+
+          <!-- Freelance iOS Developer -->
+          <div class="experience-item">
+            <div class="card-header">
+              <span class="card-title">Freelance iOS Application Developer</span>
+              <span class="date">2015 &ndash; 2016</span>
+            </div>
+            <div class="card-subtitle">Independent Engineer &middot; San Francisco, CA</div>
+            <ul class="bullet-list">
+              <li><strong>Designed, published, and maintained</strong> multiple consumer applications to the App Store, specializing in performant animations, data persistence, and graphics rendering.</li>
+              <li>Key products: <strong>Tetra Fire</strong> (SpriteKit physics engine), <strong>instanote</strong> (CoreData, custom camera integration, MapKit), and <strong>MatchPop!</strong> (custom AVFoundation implementation).</li>
+            </ul>
+          </div>
+
+          <!-- Technical Leadership & Engineering Roots -->
+          <div class="experience-item">
+            <div class="card-header">
+              <span class="card-title">Technical Leadership &amp; Engineering Roots (Condensed)</span>
+              <span class="date">2003 &ndash; 2015</span>
+            </div>
+            <ul class="bullet-list">
+              <li><strong>Odopod (San Francisco, CA &middot; 2012&ndash;2015)</strong>: Executive Producer / Tech Operations. Managed cross-functional engineering and design groups, directing technical specifications and functional requirements for a multi-million dollar digital portfolio.</li>
+              <li><strong>Crispin Porter + Bogusky (Boulder, CO &middot; 2011&ndash;2012)</strong>: Sr. Technical Producer. Directed cross-functional technical teams and system integrations for enterprise-tier clients including American Express.</li>
+              <li><strong>180 Amsterdam (Amsterdam, Netherlands &middot; 2010&ndash;2011)</strong>: Lead Developer. Architected the global redesign for the <strong>adidas</strong> sports performance web ecosystem and adjacent 2010 FIFA World Cup digital campaigns.</li>
+              <li><em>Prior Experience: Lead Developer roles across Critical Mass, JMDoczy Solutions, and Resource Interactive (2003&ndash;2009) specializing in web technologies, motion graphics, and early rich media frameworks.</em></li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Featured Projects & Photography -->
+      <section id="projects">
+        <h2>Published Apps &amp; Featured Projects</h2>
+        <div class="project-list">
+          
+          <!-- Tetra Fire -->
+          <article class="project-card">
+            <div class="card-media">
+              <img 
+                src="images/tetrafire/tout_desktop.jpg" 
+                srcset="images/tetrafire/tout_mobile.jpg 600w, images/tetrafire/tout_tablet.jpg 1024w, images/tetrafire/tout_desktop.jpg 1800w"
+                sizes="(max-width: 720px) 100vw, 720px"
+                alt="Tetra Fire arcade puzzle game" 
+                loading="lazy"
+              />
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-title">Tetra Fire</span>
+                <span class="date">iOS App</span>
+              </div>
+              <div class="card-subtitle">Igniting a classic with a new twist</div>
+              <p class="card-desc">
+                A high-framerate puzzle arcade game that combines classic falling block mechanics with dynamic particle animation systems emulating natural elements (fire, rain, smoke, explosions). Features 15 progressive levels, multiple game modes, and custom particle physics.
+              </p>
+              <div class="card-footer">
+                <div class="tags">
+                  <span class="tag">Swift</span>
+                  <span class="tag">SpriteKit</span>
+                  <span class="tag">Particle Emitters</span>
+                  <span class="tag">NSKeyedArchiver</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://itunes.apple.com/us/app/tetra-fire/id1085398276?mt=8" target="_blank" rel="noopener">App Store &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- ooVoo -->
+          <article class="project-card">
+            <div class="card-media">
+              <img 
+                src="images/oovoo/tout_desktop.jpg" 
+                srcset="images/oovoo/tout_mobile.jpg 600w, images/oovoo/tout_tablet.jpg 1024w, images/oovoo/tout_desktop.jpg 1800w"
+                sizes="(max-width: 720px) 100vw, 720px"
+                alt="ooVoo mobile video chat application" 
+                loading="lazy"
+              />
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-title">ooVoo</span>
+                <span class="date">Mobile Platform</span>
+              </div>
+              <div class="card-subtitle">Video chat, messaging, &amp; collaborative stories</div>
+              <p class="card-desc">
+                Contributed to engineering the iOS client for ooVoo at Krush Technologies with a team of 20+ developers, scaling the application into a multi-party social hangout. Built and optimized 8-way face-to-face simultaneous video calling, asynchronous video story chains, and low-latency messaging.
+              </p>
+              <div class="card-footer">
+                <div class="tags">
+                  <span class="tag">Swift</span>
+                  <span class="tag">AVFoundation</span>
+                  <span class="tag">Swinject (DI)</span>
+                  <span class="tag">Push Notifications</span>
+                  <span class="tag">MVVM</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- instanote -->
+          <article class="project-card">
+            <div class="card-media">
+              <img 
+                src="images/instanote/tout_desktop.jpg" 
+                srcset="images/instanote/tout_mobile.jpg 600w, images/instanote/tout_tablet.jpg 1024w, images/instanote/tout_desktop.jpg 1800w"
+                sizes="(max-width: 720px) 100vw, 720px"
+                alt="instanote camera and memory journaling app" 
+                loading="lazy"
+              />
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-title">instanote</span>
+                <span class="date">iOS App</span>
+              </div>
+              <div class="card-subtitle">Preserve your memories with rich metadata</div>
+              <p class="card-desc">
+                A photo memory app that attaches captions, location data, and custom taxonomy tags to pictures for rapid indexed search. Features an offline-first Core Data persistence layer, custom in-app camera capture, predictive typing, and map view integration.
+              </p>
+              <div class="card-footer">
+                <div class="tags">
+                  <span class="tag">Swift</span>
+                  <span class="tag">Core Data</span>
+                  <span class="tag">MapKit</span>
+                  <span class="tag">Custom Camera UI</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://itunes.apple.com/us/app/insta-note/id1067575526?mt=8" target="_blank" rel="noopener">App Store &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Match Pop! -->
+          <article class="project-card">
+            <div class="card-media">
+              <img 
+                src="images/matchpop/tout_desktop.jpg" 
+                srcset="images/matchpop/tout_mobile.jpg 600w, images/matchpop/tout_tablet.jpg 1024w, images/matchpop/tout_desktop.jpg 1800w"
+                sizes="(max-width: 720px) 100vw, 720px"
+                alt="Match Pop! interactive card matching game" 
+                loading="lazy"
+              />
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-title">Match Pop!</span>
+                <span class="date">iOS App</span>
+              </div>
+              <div class="card-subtitle">Memory skills and interactive card game</div>
+              <p class="card-desc">
+                A responsive card matching game designed with vector illustrations, smooth animations, and audio effects. Features customizable difficulty settings, persistent user preferences, and a balloon-popping mini-game.
+              </p>
+              <div class="card-footer">
+                <div class="tags">
+                  <span class="tag">Swift</span>
+                  <span class="tag">AVFoundation</span>
+                  <span class="tag">Vector Graphics</span>
+                  <span class="tag">NSUserDefaults</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://itunes.apple.com/us/app/matchpop!/id1062419829?mt=8" target="_blank" rel="noopener">App Store &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Graph -->
+          <article class="project-card">
+            <div class="card-media">
+              <img 
+                src="images/graph/tout_desktop.jpg" 
+                srcset="images/graph/tout_mobile.jpg 600w, images/graph/tout_tablet.jpg 1024w, images/graph/tout_desktop.jpg 1800w"
+                sizes="(max-width: 720px) 100vw, 720px"
+                alt="Graph mathematical function plotting prototype" 
+                loading="lazy"
+              />
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-title">Graph</span>
+                <span class="date">Prototype</span>
+              </div>
+              <div class="card-subtitle">Mathematical equation graphing utility</div>
+              <p class="card-desc">
+                A scientific calculator prototype that computes mathematical functions and plots continuous curves across a dynamic 2D coordinate system using custom vector path rendering.
+              </p>
+              <div class="card-footer">
+                <div class="tags">
+                  <span class="tag">Swift</span>
+                  <span class="tag">UIBezierPath</span>
+                  <span class="tag">SplitViewController</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Acronym -->
+          <article class="project-card">
+            <div class="card-media">
+              <img 
+                src="images/acronym/tout_desktop.jpg" 
+                srcset="images/acronym/tout_mobile.jpg 600w, images/acronym/tout_tablet.jpg 1024w, images/acronym/tout_desktop.jpg 1800w"
+                sizes="(max-width: 720px) 100vw, 720px"
+                alt="Acronym definition lookup utility" 
+                loading="lazy"
+              />
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-title">Acronym</span>
+                <span class="date">Prototype</span>
+              </div>
+              <div class="card-subtitle">Asynchronous acronym definition lookup</div>
+              <p class="card-desc">
+                An asynchronous lookup application that queries public APIs to retrieve definitions of acronyms, organizing results with sectioned tables and real-time JSON parsing.
+              </p>
+              <div class="card-footer">
+                <div class="tags">
+                  <span class="tag">Objective-C</span>
+                  <span class="tag">AFNetworking</span>
+                  <span class="tag">REST API</span>
+                  <span class="tag">UITableView</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education">
+        <h2>Education &amp; Certifications</h2>
+        <div class="edu-item">
+          <div class="edu-title">The Ohio State University &middot; Columbus, OH</div>
+          <div class="edu-meta">Bachelor of Arts: Interactive Communication Processes &middot; <em>Minor: Computer Information Sciences</em></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-title">MIT (Online Coursework)</div>
+          <div class="edu-meta">Certificate: Introduction to Computational Thinking and Data Science (6.00.2x)</div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <h2>Get in Touch</h2>
+        <p>
+          Whether you want to discuss mobile architecture, media streaming engines, or engineering opportunities, feel free to reach out.
+        </p>
+        <p>
+          Email me directly at <a href="mailto:jdoczy@gmail.com">jdoczy@gmail.com</a> or connect on <a href="https://linkedin.com/in/jordandoczy" target="_blank" rel="noopener">LinkedIn</a>.
+        </p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <span>&copy; <span id="year"></span> Jordan Doczy</span>
+      <div class="links">
+        <a href="mailto:jdoczy@gmail.com">jdoczy@gmail.com</a>
+        <a href="https://linkedin.com/in/jordandoczy" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/jordandoczy" target="_blank" rel="noopener">GitHub</a>
+        <a href="resume.html" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

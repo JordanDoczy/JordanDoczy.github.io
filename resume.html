@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jordan Doczy — Senior iOS Engineer — Resume</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #4b5563;
+      --text-subtle: #6b7280;
+      --border: #e5e7eb;
+      --link: #0969da;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121316;
+        --text: #e5e7eb;
+        --text-muted: #9ca3af;
+        --text-subtle: #6b7280;
+        --border: #242831;
+        --link: #58a6ff;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      color: var(--text);
+      background-color: var(--bg);
+      padding: 40px 20px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Top Nav Bar */
+    .top-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .top-actions a {
+      color: var(--link);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .top-actions a:hover {
+      text-decoration: underline;
+    }
+
+    .btn-print {
+      background: var(--link);
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .btn-print:hover {
+      opacity: 0.9;
+    }
+
+    /* Resume Document */
+    header {
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--text);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .headline {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .contact-line {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact-line a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    section {
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    /* Competencies */
+    .comp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.93rem;
+    }
+
+    .comp-list li strong {
+      color: var(--text);
+    }
+
+    /* Job Entries */
+    .role-block {
+      margin-bottom: 20px;
+    }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 2px;
+    }
+
+    .company-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .role-title {
+      font-weight: 600;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    .role-meta {
+      font-size: 0.88rem;
+      color: var(--text-subtle);
+      margin-bottom: 6px;
+    }
+
+    .role-bullets {
+      margin: 6px 0 8px 20px;
+      font-size: 0.92rem;
+    }
+
+    .role-bullets li {
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .role-tech {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* Education */
+    .edu-block {
+      margin-bottom: 10px;
+      font-size: 0.93rem;
+    }
+
+    .edu-block strong {
+      color: var(--text);
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #fff !important;
+        color: #000 !important;
+      }
+      .top-actions {
+        display: none !important;
+      }
+      header {
+        border-bottom-color: #000;
+      }
+      h2 {
+        border-bottom-color: #ccc;
+      }
+      a {
+        color: #000 !important;
+        text-decoration: none !important;
+      }
+      .role-block {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-actions">
+      <a href="index.html">&larr; Back to Portfolio</a>
+      <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <h1>Jordan Doczy</h1>
+      <div class="headline">Senior iOS Engineer</div>
+      <div class="contact-line">
+        <span>Dayton, OH &middot; Remote</span>
+        <span>&middot;</span>
+        <a href="mailto:jdoczy@gmail.com">jdoczy@gmail.com</a>
+        <span>&middot;</span>
+        <a href="https://linkedin.com/in/jordandoczy" target="_blank" rel="noopener">linkedin.com/in/jordandoczy</a>
+        <span>&middot;</span>
+        <a href="https://github.com/jordandoczy" target="_blank" rel="noopener">github.com/jordandoczy</a>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section>
+      <h2>Professional Summary</h2>
+      <p>
+        <strong>Senior iOS Engineer</strong> with a proven track record of architecting scalable mobile platforms, high-performance media engines, and robust data observability frameworks for tier-1 applications like <strong>The New York Times</strong>. Expert in modern native iOS paradigms—including <strong>SwiftUI, Swift Concurrency (Async/Await), and the Observable framework</strong>—paired with deep mobile infrastructure and modularization strategy. Adept at leveraging <strong>AI-assisted engineering tools</strong> to accelerate feature delivery, optimize codebases, and mentor multi-disciplinary mobile teams in modern development practices.
+      </p>
+    </section>
+
+    <!-- Core Competencies -->
+    <section>
+      <h2>Core Competencies</h2>
+      <ul class="comp-list">
+        <li><strong>Architecture &amp; iOS Ecosystem:</strong> SwiftUI, Async/Await, Structured Concurrency, Observable Framework, AVFoundation, Combine, UIKit, App Modularization.</li>
+        <li><strong>AI-Assisted Engineering:</strong> AI Tool Integration (Claude Code), Prompt Engineering for Complex Codebases, Code Quality Automation, Technical Mentorship.</li>
+        <li><strong>Observability &amp; CI/CD:</strong> Datadog Dashboards, Feature Telemetry, Progressive Rollout Planning, App Health Monitoring, TestFlight Deployment.</li>
+        <li><strong>Technical Leadership:</strong> Code Review Standards, Tech Roadmap Execution, Cross-Functional Alignment, Agile/Scrum Methodologies.</li>
+      </ul>
+    </section>
+
+    <!-- Professional Experience -->
+    <section>
+      <h2>Professional Experience</h2>
+
+      <!-- The New York Times -->
+      <div class="role-block">
+        <div class="role-header">
+          <span class="company-title">The New York Times <span class="role-title">&middot; Sr. iOS Developer / Technical Consultant</span></span>
+          <span class="role-meta">Feb 2022 &ndash; Present</span>
+        </div>
+        <div class="role-meta">Remote</div>
+        <ul class="role-bullets">
+          <li><strong>Rebuilt the core native mobile media engine</strong> powering all audio and video podcasts within the primary app ecosystem.</li>
+          <li><strong>Led the mobile infrastructure development</strong> for two high-traffic, media-focused application surfaces—the <strong>Watch Tab</strong> and the <strong>Shows Tab</strong>—ensuring performant UI delivery and fluid navigation.</li>
+          <li><strong>Architected and shipped a multi-threaded rendering engine</strong> to power nested reader comments, implementing advanced background thread processing and caching strategies.</li>
+          <li><strong>Integrated AI-first development workflows</strong> into daily operations, establishing best practices for prompt engineering and codebase safety that accelerated feature delivery across mobile teams.</li>
+          <li><strong>Owned release management and app health</strong> for major feature rollouts, designing progressive deployment strategies and building comprehensive <strong>Datadog telemetry dashboards</strong> to track app stability.</li>
+        </ul>
+        <div class="role-tech">
+          Tech Stack: iOS SDK, Swift, SwiftUI, Async/Await, Structured Concurrency, Observable Framework, AVFoundation, Datadog, Bitrise, GitHub.
+        </div>
+      </div>
+
+      <!-- Sherwin-Williams -->
+      <div class="role-block">
+        <div class="role-header">
+          <span class="company-title">Sherwin-Williams <span class="role-title">&middot; Sr. iOS Developer / Technical Consultant</span></span>
+          <span class="role-meta">Apr 2021 &ndash; Feb 2022</span>
+        </div>
+        <div class="role-meta">Dayton, OH</div>
+        <ul class="role-bullets">
+          <li><strong>Designed technical roadmaps and architectural plans</strong> for large-scale enterprise application rebuilds, translating business goals into production-ready Swift codebases.</li>
+          <li><strong>Spearheaded modern delivery and code standards</strong> across the flagship <em>ProApp</em>, optimizing pull request workflows, ticket scoping, test automation, and release management.</li>
+          <li><strong>Maintained technical cohesion across polyglot mobile tracks</strong>, writing features in modern Swift while unblocking and consulting for adjacent native Android development tracks.</li>
+        </ul>
+        <div class="role-tech">
+          Tech Stack: iOS SDK, Swift, Objective-C, Android SDK, Kotlin, REST, Apple/Google Maps SDK, Google Analytics, Shell Scripting.
+        </div>
+      </div>
+
+      <!-- Ascend Innovations -->
+      <div class="role-block">
+        <div class="role-header">
+          <span class="company-title">Ascend Innovations <span class="role-title">&middot; Lead iOS Developer</span></span>
+          <span class="role-meta">Oct 2017 &ndash; Jan 2021</span>
+        </div>
+        <div class="role-meta">Dayton, OH</div>
+        <ul class="role-bullets">
+          <li><strong>Served as hands-on technical lead</strong> for the architecture, development, and delivery of a diverse suite of native mobile products.</li>
+          <li><strong>Architected complex, low-level mobile features</strong>, including custom face recognition and eye-tracking applications utilizing native C++ and Swift capabilities.</li>
+          <li><strong>Guided a 5-person delivery team</strong> through code reviews, technical scoping, and architectural mentoring, ensuring timely software releases.</li>
+          <li><strong>Accelerated product validation cycles</strong> by constructing high-fidelity rapid technical prototypes, minimizing downstream architectural risk through structured technical testing.</li>
+        </ul>
+      </div>
+
+      <!-- Krush Technologies -->
+      <div class="role-block">
+        <div class="role-header">
+          <span class="company-title">Krush Technologies <span class="role-title">&middot; iOS Application Developer</span></span>
+          <span class="role-meta">Apr 2016 &ndash; Sep 2017</span>
+        </div>
+        <div class="role-meta">Dayton, OH</div>
+        <ul class="role-bullets">
+          <li><strong>Co-designed major architectural sub-systems</strong> for concurrent multi-user voice and video chat engines, collaborating across a scaled engineering organization of 20+ mobile developers.</li>
+          <li><strong>Scaled a modular video chat framework</strong> that was successfully extracted out of the core application and embedded across an external portfolio of gaming products.</li>
+        </ul>
+        <div class="role-tech">
+          Tech Stack: iOS SDK, Swift, Android SDK, Java, Kotlin, REST, CircleCI, Cocoapods.
+        </div>
+      </div>
+
+      <!-- Freelance -->
+      <div class="role-block">
+        <div class="role-header">
+          <span class="company-title">Freelance iOS Application Developer <span class="role-title">&middot; Independent Engineer</span></span>
+          <span class="role-meta">2015 &ndash; 2016</span>
+        </div>
+        <div class="role-meta">San Francisco, CA</div>
+        <ul class="role-bullets">
+          <li><strong>Designed, published, and maintained</strong> multiple consumer applications to the App Store, specializing in performant animations, data persistence, and graphics rendering.</li>
+          <li>Key Products: <strong>Tetra Fire</strong> (SpriteKit physics engine), <strong>instanote</strong> (CoreData, Custom Camera integration, MapKit), and <strong>MatchPop!</strong> (Custom AVFoundation implementation).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Technical Leadership & Engineering Roots (Condensed) -->
+    <section>
+      <h2>Technical Leadership &amp; Engineering Roots (Condensed)</h2>
+
+      <div class="role-block">
+        <div class="role-header">
+          <span class="company-title">Odopod <span class="role-title">&middot; Executive Producer / Tech Operations</span></span>
+          <span class="role-meta">2012 &ndash; 2015</span>
+        </div>
+        <p>Managed cross-functional engineering and design groups, directing technical specifications and functional requirements for a multi-million dollar digital portfolio.</p>
+      </div>
+
+      <div class="role-block">
+        <div class="role-header">
+          <span class="company-title">Crispin Porter + Bogusky <span class="role-title">&middot; Sr. Technical Producer</span></span>
+          <span class="role-meta">2011 &ndash; 2012</span>
+        </div>
+        <p>Directed cross-functional technical teams and system integrations for enterprise-tier clients including American Express.</p>
+      </div>
+
+      <div class="role-block">
+        <div class="role-header">
+          <span class="company-title">180 Amsterdam <span class="role-title">&middot; Lead Developer</span></span>
+          <span class="role-meta">2010 &ndash; 2011</span>
+        </div>
+        <p>Architected the global redesign for the <strong>adidas</strong> sports performance web ecosystem and adjacent 2010 FIFA World Cup digital campaigns.</p>
+      </div>
+
+      <p style="font-size: 0.88rem; color: var(--text-muted); font-style: italic; margin-top: 8px;">
+        Prior Experience: Lead Developer roles across Critical Mass, JMDoczy Solutions, and Resource Interactive (2003–2009) specializing in web technologies, motion graphics, and early rich media frameworks.
+      </p>
+    </section>
+
+    <!-- Education & Certifications -->
+    <section>
+      <h2>Education &amp; Certifications</h2>
+      <div class="edu-block">
+        <div><strong>Bachelor of Arts: Interactive Communication Processes</strong> &middot; <em>Minor: Computer Information Sciences</em></div>
+        <div class="role-meta">The Ohio State University, Columbus, OH</div>
+      </div>
+      <div class="edu-block">
+        <div><strong>Certificate: Introduction to Computational Thinking and Data Science (6.00.2x)</strong></div>
+        <div class="role-meta">MIT (Online)</div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
